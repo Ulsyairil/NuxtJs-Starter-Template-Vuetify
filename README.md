@@ -1,4 +1,4 @@
-# vuetify
+# NuxtJs Starter Template Using Vuetify
 
 ## Build Setup
 
