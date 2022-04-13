@@ -1,7 +1,7 @@
 <template>
   <v-app :dark="setTheme">
     <v-navigation-drawer
-      :value="drawer"
+      v-model="drawer"
       :mini-variant="miniVariant"
       :clipped="clipped"
       fixed
@@ -134,17 +134,19 @@ export default {
     }
   },
   computed: {
-    darkMode: {
-      get() {
-        return this.$store.state.layout.darkMode
-      },
-      set() {},
+    darkMode() {
+      return this.$store.state.layout.darkMode
     },
     clipped() {
       return this.$store.state.layout.clipped
     },
-    drawer() {
-      return this.$store.state.layout.drawer
+    drawer: {
+      get() {
+        return this.$store.state.layout.drawer
+      },
+      set(newValue) {
+        this.$store.dispatch('layout/changeDrawer', newValue)
+      },
     },
     fixed() {
       return this.$store.state.layout.fixed
